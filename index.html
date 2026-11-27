@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visiting workshop · Elena Cavallin · Lab web 2026/27</title>
+  <meta name="description" content="I progetti degli studenti del Lab web 2026/27 UNIRSM realizzati nel visiting workshop con Elena Cavallin.">
+  <meta property="og:image" content="thumb.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-grid.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    :root{
+      --bg:#f2f3ef; --fg:#16181d; --muted:#6b6f78; --line:#d9dbd4; --shot:#e6e7e2; --accent:#2f45e0;
+      --display:"Bricolage Grotesque",system-ui,sans-serif;
+      --body:"Inter",system-ui,sans-serif;
+      --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    }
+    @media (prefers-color-scheme:dark){
+      :root{ --bg:#121317; --fg:#eceef2; --muted:#9097a3; --line:#2b2e37; --shot:#22252d; --accent:#8d9bff; color-scheme:dark }
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+    header{padding-block:48px 36px}
+    .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,84px);line-height:.95;letter-spacing:-.03em;margin:14px 0}
+    h1 span{color:var(--accent)}
+    .lede{color:var(--muted);max-width:60ch;margin:0 0 14px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-family:var(--mono);font-size:13px}
+    .meta b{font-weight:500;color:var(--accent)}
+    .filters{display:flex;gap:6px}
+    .filters button{font:500 13px var(--body);border:1px solid var(--line);background:transparent;color:var(--fg);padding:5px 12px;border-radius:99px;cursor:pointer}
+    .filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+    .grid{row-gap:32px}
+    .card-w{display:flex;flex-direction:column;gap:2px}
+    .shot{display:block;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--shot);border:1px solid var(--line);position:relative;margin-bottom:8px}
+    .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .35s ease}
+    a.shot:hover img{transform:scale(1.03)}
+    .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
+    .proj{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.015em;margin:0}
+    .name{font-size:14px;font-weight:500;margin:0}
+    .url{font-family:var(--mono);font-size:12px;color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+    .url:hover{text-decoration:underline}
+    .missing{font-family:var(--mono);font-size:12px;color:var(--muted)}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    .only-online .todo{display:none}
+    footer{padding-block:40px 56px;font-size:13px;color:var(--muted)}
+    @media (prefers-reduced-motion:reduce){.shot img{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="container-xl">
+    <header>
+      <div class="eyebrow">UNIRSM · Lab web 2026/27 · Partizione B</div>
+      <h1>Visiting workshop<br><span>Elena Cavallin</span></h1>
+      <p class="lede">Gli occhiali progettati dagli studenti, ognuno con il suo sito. In ordine alfabetico per cognome: clicca un'immagine per aprire il sito.</p>
+      <div class="meta">
+        <span><b>20</b> / 28 online</span>
+        <div class="filters" role="group" aria-label="Filtro">
+          <button type="button" id="f-all" aria-pressed="true">Tutti</button>
+          <button type="button" id="f-on" aria-pressed="false">Solo online</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="row grid" id="grid">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://angelinisofia06.github.io/aeris.sofia.angelini/" target="_blank" rel="noopener" aria-label="Apri il sito di Sofia Angelini"><img src="thumbs/s04.jpg" alt="Anteprima del sito Aeris" loading="lazy"></a>
+          <h2 class="proj">Aeris</h2>
+          <p class="name">Sofia Angelini</p>
+          <a class="url" href="https://angelinisofia06.github.io/aeris.sofia.angelini/" target="_blank" rel="noopener">angelinisofia06.github.io/aeris.sofia.angelini</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://sofiabezzicheri.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Sofia Bezzicheri"><img src="thumbs/s05.jpg" alt="Anteprima del sito SK!" loading="lazy"></a>
+          <h2 class="proj">SK!</h2>
+          <p class="name">Sofia Bezzicheri</p>
+          <a class="url" href="https://sofiabezzicheri.github.io/" target="_blank" rel="noopener">sofiabezzicheri.github.io</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://wiscoboy.github.io/boccarossa-visiting/" target="_blank" rel="noopener" aria-label="Apri il sito di Luigi Boccarossa"><img src="thumbs/s06.jpg" alt="Anteprima del sito Boccarossa" loading="lazy"></a>
+          <h2 class="proj">Boccarossa</h2>
+          <p class="name">Luigi Boccarossa</p>
+          <a class="url" href="https://wiscoboy.github.io/boccarossa-visiting/" target="_blank" rel="noopener">wiscoboy.github.io/boccarossa-visiting</a>
+          <a class="url" href="https://wiscoboy.github.io/occhiale/" target="_blank" rel="noopener">+ wiscoboy.github.io/occhiale</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Giulia Camasso</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Federica Cancello</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://niccocasanova-design.github.io/orbita/" target="_blank" rel="noopener" aria-label="Apri il sito di Nicco Casanova"><img src="thumbs/s03.jpg" alt="Anteprima del sito Orbita" loading="lazy"></a>
+          <h2 class="proj">Orbita</h2>
+          <p class="name">Nicco Casanova</p>
+          <a class="url" href="https://niccocasanova-design.github.io/orbita/" target="_blank" rel="noopener">niccocasanova-design.github.io/orbita</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://giacomocerioni05-blip.github.io/carotino.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Giacomo Cerioni"><img src="thumbs/s09.jpg" alt="Anteprima del sito Occhiali Protettivi" loading="lazy"></a>
+          <h2 class="proj">Occhiali Protettivi</h2>
+          <p class="name">Giacomo Cerioni</p>
+          <a class="url" href="https://giacomocerioni05-blip.github.io/carotino.github.io/" target="_blank" rel="noopener">giacomocerioni05-blip.github.io/carotino.github.io</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://adele-collab.github.io/ADE/" target="_blank" rel="noopener" aria-label="Apri il sito di Adele De Marini"><img src="thumbs/s10.jpg" alt="Anteprima del sito ADE" loading="lazy"></a>
+          <h2 class="proj">ADE</h2>
+          <p class="name">Adele De Marini</p>
+          <a class="url" href="https://adele-collab.github.io/ADE/" target="_blank" rel="noopener">adele-collab.github.io/ADE</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github/" target="_blank" rel="noopener" aria-label="Apri il sito di Jacopo Del Bianco"><img src="thumbs/s11.jpg" alt="Anteprima del sito CMF-1" loading="lazy"></a>
+          <h2 class="proj">CMF-1</h2>
+          <p class="name">Jacopo Del Bianco</p>
+          <a class="url" href="https://delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github/" target="_blank" rel="noopener">delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://eddi1517.github.io/ED-01/" target="_blank" rel="noopener" aria-label="Apri il sito di Edoardo Fabbri"><img src="thumbs/s12.jpg" alt="Anteprima del sito ED-01" loading="lazy"></a>
+          <h2 class="proj">ED-01</h2>
+          <p class="name">Edoardo Fabbri</p>
+          <a class="url" href="https://eddi1517.github.io/ED-01/" target="_blank" rel="noopener">eddi1517.github.io/ED-01</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://frensisssssss.github.io/#ascolta" target="_blank" rel="noopener" aria-label="Apri il sito di Francesca Galli"><img src="thumbs/s13.jpg" alt="Anteprima del sito Occhiali 3D Franci" loading="lazy"></a>
+          <h2 class="proj">Occhiali 3D Franci</h2>
+          <p class="name">Francesca Galli</p>
+          <a class="url" href="https://frensisssssss.github.io/#ascolta" target="_blank" rel="noopener">frensisssssss.github.io/#ascolta</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://workshop-we.vercel.app/" target="_blank" rel="noopener" aria-label="Apri il sito di Linda Garnaroli"><img src="thumbs/s14.jpg" alt="Anteprima del sito Vento" loading="lazy"></a>
+          <h2 class="proj">Vento</h2>
+          <p class="name">Linda Garnaroli</p>
+          <a class="url" href="https://workshop-we.vercel.app/" target="_blank" rel="noopener">workshop-we.vercel.app</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://lucagiorgetti006.github.io/eclisseocchiali/" target="_blank" rel="noopener" aria-label="Apri il sito di Luca Giorgetti"><img src="thumbs/s15.jpg" alt="Anteprima del sito Eclisse" loading="lazy"></a>
+          <h2 class="proj">Eclisse</h2>
+          <p class="name">Luca Giorgetti</p>
+          <a class="url" href="https://lucagiorgetti006.github.io/eclisseocchiali/" target="_blank" rel="noopener">lucagiorgetti006.github.io/eclisseocchiali</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Takwa Guezguez</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://gambling-vert.vercel.app/" target="_blank" rel="noopener" aria-label="Apri il sito di Fiorenzo Marinelli"><img src="thumbs/s17.jpg" alt="Anteprima del sito Gambling" loading="lazy"></a>
+          <h2 class="proj">Gambling</h2>
+          <p class="name">Fiorenzo Marinelli</p>
+          <a class="url" href="https://gambling-vert.vercel.app/" target="_blank" rel="noopener">gambling-vert.vercel.app</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Martina</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Viola Mongiusti</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://morriiale.github.io/morri.github.ioo/" target="_blank" rel="noopener" aria-label="Apri il sito di Alessandro Morri"><img src="thumbs/s19.jpg" alt="Anteprima del sito Morri" loading="lazy"></a>
+          <h2 class="proj">Morri</h2>
+          <p class="name">Alessandro Morri</p>
+          <a class="url" href="https://morriiale.github.io/morri.github.ioo/" target="_blank" rel="noopener">morriiale.github.io/morri.github.ioo</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Eleonora Nobili</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://palstudio-source.github.io/pal.SG-01/SG-01_Workshop/" target="_blank" rel="noopener" aria-label="Apri il sito di Federico Palladino"><img src="thumbs/s21.jpg" alt="Anteprima del sito SG-01" loading="lazy"></a>
+          <h2 class="proj">SG-01</h2>
+          <p class="name">Federico Palladino</p>
+          <a class="url" href="https://palstudio-source.github.io/pal.SG-01/SG-01_Workshop/" target="_blank" rel="noopener">palstudio-source.github.io/pal.SG-01/SG-01_Workshop</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://annuz-2.github.io/aaaaaaa/" target="_blank" rel="noopener" aria-label="Apri il sito di Anna Porcellini"><img src="thumbs/s22.jpg" alt="Anteprima del sito Sguardi" loading="lazy"></a>
+          <h2 class="proj">Sguardi</h2>
+          <p class="name">Anna Porcellini</p>
+          <a class="url" href="https://annuz-2.github.io/aaaaaaa/" target="_blank" rel="noopener">annuz-2.github.io/aaaaaaa</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://emilyrambelli-sketch.github.io/occhiali-bubblegum-/" target="_blank" rel="noopener" aria-label="Apri il sito di Emily Rambelli"><img src="thumbs/s01.jpg" alt="Anteprima del sito Bubblegum" loading="lazy"></a>
+          <h2 class="proj">Bubblegum</h2>
+          <p class="name">Emily Rambelli</p>
+          <a class="url" href="https://emilyrambelli-sketch.github.io/occhiali-bubblegum-/" target="_blank" rel="noopener">emilyrambelli-sketch.github.io/occhiali-bubblegum-</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Camila Saravia Ruiz</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+        <article class="card-w">
+          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <p class="name">Davide Sebastianelli</p>
+          <span class="missing">link non ancora inserito</span>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://davorsilic02.github.io/davorsilicgithub.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Davor Silic"><img src="thumbs/s25.jpg" alt="Anteprima del sito Grafite" loading="lazy"></a>
+          <h2 class="proj">Grafite</h2>
+          <p class="name">Davor Silic</p>
+          <a class="url" href="https://davorsilic02.github.io/davorsilicgithub.io/" target="_blank" rel="noopener">davorsilic02.github.io/davorsilicgithub.io</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://giemmmmm.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Gianmarco Tito"><img src="thumbs/s26.jpg" alt="Anteprima del sito gmt.studio" loading="lazy"></a>
+          <h2 class="proj">gmt.studio</h2>
+          <p class="name">Gianmarco Tito</p>
+          <a class="url" href="https://giemmmmm.github.io/" target="_blank" rel="noopener">giemmmmm.github.io</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://valentinavicinanza03.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Valentina Vicinanza"><img src="thumbs/s27.jpg" alt="Anteprima del sito Ombra" loading="lazy"></a>
+          <h2 class="proj">Ombra</h2>
+          <p class="name">Valentina Vicinanza</p>
+          <a class="url" href="https://valentinavicinanza03.github.io/" target="_blank" rel="noopener">valentinavicinanza03.github.io</a>
+        </article>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <article class="card-w">
+          <a class="shot" href="https://leonza09lz-hub.github.io/leozaharia.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Leonard Zaharia"><img src="thumbs/s28.jpg" alt="Anteprima del sito Sguardi" loading="lazy"></a>
+          <h2 class="proj">Sguardi</h2>
+          <p class="name">Leonard Zaharia</p>
+          <a class="url" href="https://leonza09lz-hub.github.io/leozaharia.github.io/" target="_blank" rel="noopener">leonza09lz-hub.github.io/leozaharia.github.io</a>
+        </article>
+      </div>
+    </main>
+
+    <footer>Corso tenuto da Corrado Loschi e Gian Andrea Giacobone.</footer>
+  </div>
+
+  <script>
+    const grid = document.getElementById("grid"), all = document.getElementById("f-all"), on = document.getElementById("f-on");
+    function set(v){ grid.classList.toggle("only-online", v); all.setAttribute("aria-pressed", !v); on.setAttribute("aria-pressed", v) }
+    all.onclick = () => set(false); on.onclick = () => set(true);
+  </script>
+</body>
+</html>
