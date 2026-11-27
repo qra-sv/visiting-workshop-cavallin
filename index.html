@@ -25,6 +25,9 @@
     .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
     h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,84px);line-height:.95;letter-spacing:-.03em;margin:14px 0}
     h1 span{color:var(--accent)}
+    .contacts{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 18px;font-family:var(--mono);font-size:13px}
+    .contacts a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+    .contacts a:hover{border-bottom-width:2px}
     .lede{color:var(--muted);max-width:60ch;margin:0 0 14px}
     .meta{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-family:var(--mono);font-size:13px}
     .meta b{font-weight:500;color:var(--accent)}
@@ -34,7 +37,7 @@
     .grid{row-gap:32px}
     .card-w{display:flex;flex-direction:column;gap:2px}
     .shot{display:block;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--shot);border:1px solid var(--line);position:relative;margin-bottom:8px}
-    .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .35s ease}
+    .shot img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .35s ease}
     a.shot:hover img{transform:scale(1.03)}
     .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
     .proj{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.015em;margin:0}
@@ -53,7 +56,8 @@
     <header>
       <div class="eyebrow">UNIRSM · Lab web 2026/27 · Partizione B</div>
       <h1>Visiting workshop<br><span>Elena Cavallin</span></h1>
-      <p class="lede">Gli occhiali sono stati modellati in 3D nel corso di modellazione. Durante il workshop ogni studente ha realizzato un sito per presentarli. In ordine alfabetico per cognome: clicca un'immagine per aprire il sito.</p>
+      <p class="contacts"><a href="https://www.linkedin.com/in/elenacavallin-designer/" target="_blank" rel="noopener">LinkedIn ↗</a> <a href="mailto:elena.cavallin.ec@gmail.com">elena.cavallin.ec@gmail.com</a></p>
+      <p class="lede">Gli occhiali sono stati modellati in 3D nel corso di modellazione. Durante il workshop ogni studente ha realizzato un sito per presentarli. Le immagini mostrano, dove possibile, la prova virtuale degli occhiali su volti generati al computer. In ordine alfabetico per cognome: clicca un'immagine per aprire il sito.</p>
       <div class="meta">
         <span><b>20</b> / 28 online</span>
         <div class="filters" role="group" aria-label="Filtro">
