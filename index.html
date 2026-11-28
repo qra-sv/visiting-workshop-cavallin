@@ -36,9 +36,14 @@
     .filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
     .grid{row-gap:32px}
     .card-w{display:flex;flex-direction:column;gap:2px}
-    .shot{display:block;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--shot);border:1px solid var(--line);position:relative;margin-bottom:8px}
-    .shot img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .35s ease}
-    a.shot:hover img{transform:scale(1.03)}
+    .shot{display:block;container-type:size;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--shot);border:1px solid var(--line);position:relative;margin-bottom:8px}
+    .shot>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .35s ease}
+    a.shot:hover>img{transform:scale(1.03)}
+    .peek{position:absolute;inset:0;overflow:hidden;opacity:0;transition:opacity .3s ease;background:var(--shot)}
+    .peek img{position:absolute;top:0;left:0;width:100%;height:auto;display:block;transform:translateY(0);transition:transform .5s ease}
+    a.shot:hover .peek,a.shot:focus-visible .peek{opacity:1}
+    a.shot:hover .peek img,a.shot:focus-visible .peek img{transform:translateY(calc(-100% + 100cqh));transition:transform var(--d,8s) cubic-bezier(.4,0,.6,1) .35s}
+    @media (hover:none){.peek{display:none}}
     .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--muted)}
     .proj{font-family:var(--display);font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.015em;margin:0}
     .name{font-size:14px;font-weight:500;margin:0}
@@ -48,7 +53,7 @@
     a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     .only-online .todo{display:none}
     footer{padding-block:40px 56px;font-size:13px;color:var(--muted)}
-    @media (prefers-reduced-motion:reduce){.shot img{transition:none}}
+    @media (prefers-reduced-motion:reduce){.shot>img,.peek img{transition:none!important}a.shot:hover .peek img{transform:none}}
   </style>
 </head>
 <body>
@@ -57,9 +62,9 @@
       <div class="eyebrow">UNIRSM · Lab web 2026/27 · Partizione B</div>
       <h1>Visiting workshop<br><span>Elena Cavallin</span></h1>
       <p class="contacts"><a href="https://www.linkedin.com/in/elenacavallin-designer/" target="_blank" rel="noopener">LinkedIn ↗</a> <a href="mailto:elena.cavallin.ec@gmail.com">elena.cavallin.ec@gmail.com</a></p>
-      <p class="lede">Gli occhiali sono stati modellati in 3D nel corso di modellazione. Durante il workshop ogni studente ha realizzato un sito per presentarli. Le immagini mostrano, dove possibile, la prova virtuale degli occhiali su volti generati al computer. In ordine alfabetico per cognome: clicca un'immagine per aprire il sito.</p>
+      <p class="lede">Gli occhiali sono stati modellati in 3D nel corso di modellazione. Durante il workshop ogni studente ha realizzato un sito per presentarli. Le immagini mostrano, dove possibile, la prova virtuale degli occhiali su volti generati al computer. In ordine alfabetico per cognome: passa sopra un'immagine per scorrere la pagina, clicca per aprire il sito.</p>
       <div class="meta">
-        <span><b>26</b> / 28 online</span>
+        <span><b>27</b> / 28 online</span>
         <div class="filters" role="group" aria-label="Filtro">
           <button type="button" id="f-all" aria-pressed="true">Tutti</button>
           <button type="button" id="f-on" aria-pressed="false">Solo online</button>
@@ -70,7 +75,7 @@
     <main class="row grid" id="grid">
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://angelinisofia06.github.io/aeris.sofia.angelini/" target="_blank" rel="noopener" aria-label="Apri il sito di Sofia Angelini"><img src="thumbs/s04.jpg" alt="Anteprima del sito Aeris" loading="lazy"></a>
+          <a class="shot" href="https://angelinisofia06.github.io/aeris.sofia.angelini/" target="_blank" rel="noopener" aria-label="Apri il sito di Sofia Angelini"><img src="thumbs/s04.jpg" alt="Anteprima del sito Aeris" loading="lazy"><span class="peek" style="--d:6.1s"><img src="pages/s04.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Aeris</h2>
           <p class="name">Sofia Angelini</p>
           <a class="url" href="https://angelinisofia06.github.io/aeris.sofia.angelini/" target="_blank" rel="noopener">angelinisofia06.github.io/aeris.sofia.angelini</a>
@@ -78,7 +83,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://sofiabezzicheri.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Sofia Bezzicheri"><img src="thumbs/s05.jpg" alt="Anteprima del sito SK!" loading="lazy"></a>
+          <a class="shot" href="https://sofiabezzicheri.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Sofia Bezzicheri"><img src="thumbs/s05.jpg" alt="Anteprima del sito SK!" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s05.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">SK!</h2>
           <p class="name">Sofia Bezzicheri</p>
           <a class="url" href="https://sofiabezzicheri.github.io/" target="_blank" rel="noopener">sofiabezzicheri.github.io</a>
@@ -86,11 +91,10 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://wiscoboy.github.io/boccarossa-visiting/" target="_blank" rel="noopener" aria-label="Apri il sito di Luigi Boccarossa"><img src="thumbs/s06.jpg" alt="Anteprima del sito Boccarossa" loading="lazy"></a>
+          <a class="shot" href="https://wiscoboy.github.io/boccarossa-visiting/" target="_blank" rel="noopener" aria-label="Apri il sito di Luigi Boccarossa"><img src="thumbs/s06.jpg" alt="Anteprima del sito Boccarossa" loading="lazy"><span class="peek" style="--d:5.5s"><img src="pages/s06.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Boccarossa</h2>
           <p class="name">Luigi Boccarossa</p>
           <a class="url" href="https://wiscoboy.github.io/boccarossa-visiting/" target="_blank" rel="noopener">wiscoboy.github.io/boccarossa-visiting</a>
-          <a class="url" href="https://wiscoboy.github.io/occhiale/" target="_blank" rel="noopener">+ wiscoboy.github.io/occhiale</a>
         </article>
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
@@ -102,7 +106,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://federicacancello06-alt.github.io/federicacancello-studio/" target="_blank" rel="noopener" aria-label="Apri il sito di Federica Cancello"><img src="thumbs/s08.jpg" alt="Anteprima del sito Federica Cancello Studio" loading="lazy"></a>
+          <a class="shot" href="https://federicacancello06-alt.github.io/federicacancello-studio/" target="_blank" rel="noopener" aria-label="Apri il sito di Federica Cancello"><img src="thumbs/s08.jpg" alt="Anteprima del sito Federica Cancello Studio" loading="lazy"><span class="peek" style="--d:4.0s"><img src="pages/s08.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Federica Cancello Studio</h2>
           <p class="name">Federica Cancello</p>
           <a class="url" href="https://federicacancello06-alt.github.io/federicacancello-studio/" target="_blank" rel="noopener">federicacancello06-alt.github.io/federicacancello-studio</a>
@@ -110,7 +114,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://marticarnevali14-crypto.github.io/sito_occhiali/" target="_blank" rel="noopener" aria-label="Apri il sito di Martina Carnevali"><img src="thumbs/s02.jpg" alt="Anteprima del sito Tina" loading="lazy"></a>
+          <a class="shot" href="https://marticarnevali14-crypto.github.io/sito_occhiali/" target="_blank" rel="noopener" aria-label="Apri il sito di Martina Carnevali"><img src="thumbs/s02.jpg" alt="Anteprima del sito Tina" loading="lazy"><span class="peek" style="--d:5.3s"><img src="pages/s02.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Tina</h2>
           <p class="name">Martina Carnevali</p>
           <a class="url" href="https://marticarnevali14-crypto.github.io/sito_occhiali/" target="_blank" rel="noopener">marticarnevali14-crypto.github.io/sito_occhiali</a>
@@ -118,7 +122,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://niccocasanova-design.github.io/orbita/" target="_blank" rel="noopener" aria-label="Apri il sito di Nicco Casanova"><img src="thumbs/s03.jpg" alt="Anteprima del sito Orbita" loading="lazy"></a>
+          <a class="shot" href="https://niccocasanova-design.github.io/orbita/" target="_blank" rel="noopener" aria-label="Apri il sito di Nicco Casanova"><img src="thumbs/s03.jpg" alt="Anteprima del sito Orbita" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s03.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Orbita</h2>
           <p class="name">Nicco Casanova</p>
           <a class="url" href="https://niccocasanova-design.github.io/orbita/" target="_blank" rel="noopener">niccocasanova-design.github.io/orbita</a>
@@ -126,7 +130,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://giacomocerioni05-blip.github.io/carotino.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Giacomo Cerioni"><img src="thumbs/s09.jpg" alt="Anteprima del sito Occhiali Protettivi" loading="lazy"></a>
+          <a class="shot" href="https://giacomocerioni05-blip.github.io/carotino.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Giacomo Cerioni"><img src="thumbs/s09.jpg" alt="Anteprima del sito Occhiali Protettivi" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s09.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Occhiali Protettivi</h2>
           <p class="name">Giacomo Cerioni</p>
           <a class="url" href="https://giacomocerioni05-blip.github.io/carotino.github.io/" target="_blank" rel="noopener">giacomocerioni05-blip.github.io/carotino.github.io</a>
@@ -134,7 +138,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://adele-collab.github.io/ADE/" target="_blank" rel="noopener" aria-label="Apri il sito di Adele De Marini"><img src="thumbs/s10.jpg" alt="Anteprima del sito ADE" loading="lazy"></a>
+          <a class="shot" href="https://adele-collab.github.io/ADE/" target="_blank" rel="noopener" aria-label="Apri il sito di Adele De Marini"><img src="thumbs/s10.jpg" alt="Anteprima del sito ADE" loading="lazy"><span class="peek" style="--d:10.0s"><img src="pages/s10.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">ADE</h2>
           <p class="name">Adele De Marini</p>
           <a class="url" href="https://adele-collab.github.io/ADE/" target="_blank" rel="noopener">adele-collab.github.io/ADE</a>
@@ -142,7 +146,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github/" target="_blank" rel="noopener" aria-label="Apri il sito di Jacopo Del Bianco"><img src="thumbs/s11.jpg" alt="Anteprima del sito CMF-1" loading="lazy"></a>
+          <a class="shot" href="https://delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github/" target="_blank" rel="noopener" aria-label="Apri il sito di Jacopo Del Bianco"><img src="thumbs/s11.jpg" alt="Anteprima del sito CMF-1" loading="lazy"><span class="peek" style="--d:10.6s"><img src="pages/s11.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">CMF-1</h2>
           <p class="name">Jacopo Del Bianco</p>
           <a class="url" href="https://delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github/" target="_blank" rel="noopener">delbiancojacopo75-eng.github.io/delbiancojacopo757/sito_github</a>
@@ -150,7 +154,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://eddi1517.github.io/ED-01/" target="_blank" rel="noopener" aria-label="Apri il sito di Edoardo Fabbri"><img src="thumbs/s12.jpg" alt="Anteprima del sito ED-01" loading="lazy"></a>
+          <a class="shot" href="https://eddi1517.github.io/ED-01/" target="_blank" rel="noopener" aria-label="Apri il sito di Edoardo Fabbri"><img src="thumbs/s12.jpg" alt="Anteprima del sito ED-01" loading="lazy"><span class="peek" style="--d:4.0s"><img src="pages/s12.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">ED-01</h2>
           <p class="name">Edoardo Fabbri</p>
           <a class="url" href="https://eddi1517.github.io/ED-01/" target="_blank" rel="noopener">eddi1517.github.io/ED-01</a>
@@ -158,7 +162,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://frensisssssss.github.io/#ascolta" target="_blank" rel="noopener" aria-label="Apri il sito di Francesca Galli"><img src="thumbs/s13.jpg" alt="Anteprima del sito Occhiali 3D Franci" loading="lazy"></a>
+          <a class="shot" href="https://frensisssssss.github.io/#ascolta" target="_blank" rel="noopener" aria-label="Apri il sito di Francesca Galli"><img src="thumbs/s13.jpg" alt="Anteprima del sito Occhiali 3D Franci" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s13.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Occhiali 3D Franci</h2>
           <p class="name">Francesca Galli</p>
           <a class="url" href="https://frensisssssss.github.io/#ascolta" target="_blank" rel="noopener">frensisssssss.github.io/#ascolta</a>
@@ -166,7 +170,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://workshop-we.vercel.app/" target="_blank" rel="noopener" aria-label="Apri il sito di Linda Garnaroli"><img src="thumbs/s14.jpg" alt="Anteprima del sito Vento" loading="lazy"></a>
+          <a class="shot" href="https://workshop-we.vercel.app/" target="_blank" rel="noopener" aria-label="Apri il sito di Linda Garnaroli"><img src="thumbs/s14.jpg" alt="Anteprima del sito Vento" loading="lazy"><span class="peek" style="--d:5.9s"><img src="pages/s14.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Vento</h2>
           <p class="name">Linda Garnaroli</p>
           <a class="url" href="https://workshop-we.vercel.app/" target="_blank" rel="noopener">workshop-we.vercel.app</a>
@@ -174,7 +178,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://lucagiorgetti006.github.io/eclisseocchiali/" target="_blank" rel="noopener" aria-label="Apri il sito di Luca Giorgetti"><img src="thumbs/s15.jpg" alt="Anteprima del sito Eclisse" loading="lazy"></a>
+          <a class="shot" href="https://lucagiorgetti006.github.io/eclisseocchiali/" target="_blank" rel="noopener" aria-label="Apri il sito di Luca Giorgetti"><img src="thumbs/s15.jpg" alt="Anteprima del sito Eclisse" loading="lazy"><span class="peek" style="--d:4.7s"><img src="pages/s15.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Eclisse</h2>
           <p class="name">Luca Giorgetti</p>
           <a class="url" href="https://lucagiorgetti006.github.io/eclisseocchiali/" target="_blank" rel="noopener">lucagiorgetti006.github.io/eclisseocchiali</a>
@@ -182,7 +186,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://guezgueztakwa-ai.github.io/glasses/" target="_blank" rel="noopener" aria-label="Apri il sito di Takwa Guezguez"><img src="thumbs/s16.jpg" alt="Anteprima del sito TG One" loading="lazy"></a>
+          <a class="shot" href="https://guezgueztakwa-ai.github.io/glasses/" target="_blank" rel="noopener" aria-label="Apri il sito di Takwa Guezguez"><img src="thumbs/s16.jpg" alt="Anteprima del sito TG One" loading="lazy"><span class="peek" style="--d:10.3s"><img src="pages/s16.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">TG One</h2>
           <p class="name">Takwa Guezguez</p>
           <a class="url" href="https://guezgueztakwa-ai.github.io/glasses/" target="_blank" rel="noopener">guezgueztakwa-ai.github.io/glasses</a>
@@ -190,7 +194,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://gambling-vert.vercel.app/" target="_blank" rel="noopener" aria-label="Apri il sito di Fiorenzo Marinelli"><img src="thumbs/s17.jpg" alt="Anteprima del sito Gambling" loading="lazy"></a>
+          <a class="shot" href="https://gambling-vert.vercel.app/" target="_blank" rel="noopener" aria-label="Apri il sito di Fiorenzo Marinelli"><img src="thumbs/s17.jpg" alt="Anteprima del sito Gambling" loading="lazy"><span class="peek" style="--d:9.2s"><img src="pages/s17.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Gambling</h2>
           <p class="name">Fiorenzo Marinelli</p>
           <a class="url" href="https://gambling-vert.vercel.app/" target="_blank" rel="noopener">gambling-vert.vercel.app</a>
@@ -198,7 +202,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://violamongiusti05-del.github.io/occhiali-veloci/" target="_blank" rel="noopener" aria-label="Apri il sito di Viola Mongiusti"><img src="thumbs/s18.jpg" alt="Anteprima del sito Occhiali veloci" loading="lazy"></a>
+          <a class="shot" href="https://violamongiusti05-del.github.io/occhiali-veloci/" target="_blank" rel="noopener" aria-label="Apri il sito di Viola Mongiusti"><img src="thumbs/s18.jpg" alt="Anteprima del sito Occhiali veloci" loading="lazy"><span class="peek" style="--d:5.1s"><img src="pages/s18.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Occhiali veloci</h2>
           <p class="name">Viola Mongiusti</p>
           <a class="url" href="https://violamongiusti05-del.github.io/occhiali-veloci/" target="_blank" rel="noopener">violamongiusti05-del.github.io/occhiali-veloci</a>
@@ -206,7 +210,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://morriiale.github.io/morri.github.ioo/" target="_blank" rel="noopener" aria-label="Apri il sito di Alessandro Morri"><img src="thumbs/s19.jpg" alt="Anteprima del sito Morri" loading="lazy"></a>
+          <a class="shot" href="https://morriiale.github.io/morri.github.ioo/" target="_blank" rel="noopener" aria-label="Apri il sito di Alessandro Morri"><img src="thumbs/s19.jpg" alt="Anteprima del sito Morri" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s19.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Morri</h2>
           <p class="name">Alessandro Morri</p>
           <a class="url" href="https://morriiale.github.io/morri.github.ioo/" target="_blank" rel="noopener">morriiale.github.io/morri.github.ioo</a>
@@ -214,7 +218,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://niska-333.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Eleonora Nobili"><img src="thumbs/s20.jpg" alt="Anteprima del sito Ski Goggles" loading="lazy"></a>
+          <a class="shot" href="https://niska-333.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Eleonora Nobili"><img src="thumbs/s20.jpg" alt="Anteprima del sito Ski Goggles" loading="lazy"><span class="peek" style="--d:10.6s"><img src="pages/s20.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Ski Goggles</h2>
           <p class="name">Eleonora Nobili</p>
           <a class="url" href="https://niska-333.github.io/" target="_blank" rel="noopener">niska-333.github.io</a>
@@ -222,7 +226,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://palstudio-source.github.io/pal.SG-01/SG-01_Workshop/" target="_blank" rel="noopener" aria-label="Apri il sito di Federico Palladino"><img src="thumbs/s21.jpg" alt="Anteprima del sito SG-01" loading="lazy"></a>
+          <a class="shot" href="https://palstudio-source.github.io/pal.SG-01/SG-01_Workshop/" target="_blank" rel="noopener" aria-label="Apri il sito di Federico Palladino"><img src="thumbs/s21.jpg" alt="Anteprima del sito SG-01" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s21.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">SG-01</h2>
           <p class="name">Federico Palladino</p>
           <a class="url" href="https://palstudio-source.github.io/pal.SG-01/SG-01_Workshop/" target="_blank" rel="noopener">palstudio-source.github.io/pal.SG-01/SG-01_Workshop</a>
@@ -230,7 +234,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://annuz-2.github.io/aaaaaaa/" target="_blank" rel="noopener" aria-label="Apri il sito di Anna Porcellini"><img src="thumbs/s22.jpg" alt="Anteprima del sito Sguardi" loading="lazy"></a>
+          <a class="shot" href="https://annuz-2.github.io/aaaaaaa/" target="_blank" rel="noopener" aria-label="Apri il sito di Anna Porcellini"><img src="thumbs/s22.jpg" alt="Anteprima del sito Sguardi" loading="lazy"><span class="peek" style="--d:10.7s"><img src="pages/s22.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Sguardi</h2>
           <p class="name">Anna Porcellini</p>
           <a class="url" href="https://annuz-2.github.io/aaaaaaa/" target="_blank" rel="noopener">annuz-2.github.io/aaaaaaa</a>
@@ -238,7 +242,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://emilyrambelli-sketch.github.io/occhiali-bubblegum-/" target="_blank" rel="noopener" aria-label="Apri il sito di Emily Rambelli"><img src="thumbs/s01.jpg" alt="Anteprima del sito Bubblegum" loading="lazy"></a>
+          <a class="shot" href="https://emilyrambelli-sketch.github.io/occhiali-bubblegum-/" target="_blank" rel="noopener" aria-label="Apri il sito di Emily Rambelli"><img src="thumbs/s01.jpg" alt="Anteprima del sito Bubblegum" loading="lazy"><span class="peek" style="--d:9.6s"><img src="pages/s01.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Bubblegum</h2>
           <p class="name">Emily Rambelli</p>
           <a class="url" href="https://emilyrambelli-sketch.github.io/occhiali-bubblegum-/" target="_blank" rel="noopener">emilyrambelli-sketch.github.io/occhiali-bubblegum-</a>
@@ -246,22 +250,23 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://camilasaravia1234-star.github.io/orizzonte/?v=4" target="_blank" rel="noopener" aria-label="Apri il sito di Camila Saravia Ruiz"><img src="thumbs/s23.jpg" alt="Anteprima del sito Orizzonte" loading="lazy"></a>
+          <a class="shot" href="https://camilasaravia1234-star.github.io/orizzonte/?v=4" target="_blank" rel="noopener" aria-label="Apri il sito di Camila Saravia Ruiz"><img src="thumbs/s23.jpg" alt="Anteprima del sito Orizzonte" loading="lazy"><span class="peek" style="--d:10.0s"><img src="pages/s23.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Orizzonte</h2>
           <p class="name">Camila Saravia Ruiz</p>
           <a class="url" href="https://camilasaravia1234-star.github.io/orizzonte/?v=4" target="_blank" rel="noopener">camilasaravia1234-star.github.io/orizzonte/?v=4</a>
         </article>
       </div>
-      <div class="col-12 col-sm-6 col-lg-4 col-xl-3 todo">
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <div class="shot"><span class="ph">Sito non ancora pubblicato</span></div>
+          <a class="shot" href="https://wiscoboy.github.io/occhiale/" target="_blank" rel="noopener" aria-label="Apri il sito di Davide Sebastianelli"><img src="thumbs/s24.jpg" alt="Anteprima del sito Modello Uno" loading="lazy"><span class="peek" style="--d:9.4s"><img src="pages/s24.jpg" alt="" loading="lazy"></span></a>
+          <h2 class="proj">Modello Uno</h2>
           <p class="name">Davide Sebastianelli</p>
-          <span class="missing">link non ancora inserito</span>
+          <a class="url" href="https://wiscoboy.github.io/occhiale/" target="_blank" rel="noopener">wiscoboy.github.io/occhiale</a>
         </article>
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://davorsilic02.github.io/davorsilicgithub.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Davor Silic"><img src="thumbs/s25.jpg" alt="Anteprima del sito Grafite" loading="lazy"></a>
+          <a class="shot" href="https://davorsilic02.github.io/davorsilicgithub.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Davor Silic"><img src="thumbs/s25.jpg" alt="Anteprima del sito Grafite" loading="lazy"><span class="peek" style="--d:8.9s"><img src="pages/s25.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Grafite</h2>
           <p class="name">Davor Silic</p>
           <a class="url" href="https://davorsilic02.github.io/davorsilicgithub.io/" target="_blank" rel="noopener">davorsilic02.github.io/davorsilicgithub.io</a>
@@ -269,7 +274,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://giemmmmm.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Gianmarco Tito"><img src="thumbs/s26.jpg" alt="Anteprima del sito gmt.studio" loading="lazy"></a>
+          <a class="shot" href="https://giemmmmm.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Gianmarco Tito"><img src="thumbs/s26.jpg" alt="Anteprima del sito gmt.studio" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s26.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">gmt.studio</h2>
           <p class="name">Gianmarco Tito</p>
           <a class="url" href="https://giemmmmm.github.io/" target="_blank" rel="noopener">giemmmmm.github.io</a>
@@ -277,7 +282,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://valentinavicinanza03.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Valentina Vicinanza"><img src="thumbs/s27.jpg" alt="Anteprima del sito Ombra" loading="lazy"></a>
+          <a class="shot" href="https://valentinavicinanza03.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Valentina Vicinanza"><img src="thumbs/s27.jpg" alt="Anteprima del sito Ombra" loading="lazy"><span class="peek" style="--d:12.0s"><img src="pages/s27.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Ombra</h2>
           <p class="name">Valentina Vicinanza</p>
           <a class="url" href="https://valentinavicinanza03.github.io/" target="_blank" rel="noopener">valentinavicinanza03.github.io</a>
@@ -285,7 +290,7 @@
       </div>
       <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
         <article class="card-w">
-          <a class="shot" href="https://leonza09lz-hub.github.io/leozaharia.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Leonard Zaharia"><img src="thumbs/s28.jpg" alt="Anteprima del sito Sguardi" loading="lazy"></a>
+          <a class="shot" href="https://leonza09lz-hub.github.io/leozaharia.github.io/" target="_blank" rel="noopener" aria-label="Apri il sito di Leonard Zaharia"><img src="thumbs/s28.jpg" alt="Anteprima del sito Sguardi" loading="lazy"><span class="peek" style="--d:4.9s"><img src="pages/s28.jpg" alt="" loading="lazy"></span></a>
           <h2 class="proj">Sguardi</h2>
           <p class="name">Leonard Zaharia</p>
           <a class="url" href="https://leonza09lz-hub.github.io/leozaharia.github.io/" target="_blank" rel="noopener">leonza09lz-hub.github.io/leozaharia.github.io</a>
